@@ -3,7 +3,7 @@ import { FlatList, Pressable, RefreshControl, StyleSheet, Text, View } from "rea
 import Screen from "../components/Screen";
 import { Banner, Button, Empty, Loading } from "../components/ui";
 import { api, ApiError } from "../api";
-import { colors, radius } from "../theme";
+import { colors, fonts, radius } from "../theme";
 import { AdminTemplate } from "../types";
 
 export default function TemplatesScreen({ onBack, onOpen, onUnauthorized }: {
@@ -56,8 +56,8 @@ export default function TemplatesScreen({ onBack, onOpen, onUnauthorized }: {
 }
 
 const s = StyleSheet.create({
-  sub: { color: colors.muted },
+  sub: { color: colors.muted, fontFamily: fonts.family },
   card: { backgroundColor: "#fff", borderWidth: 1, borderColor: colors.line, borderRadius: radius.md, padding: 16 },
-  title: { fontSize: 17, fontWeight: "700", color: colors.ink },
-  meta: { color: colors.muted, fontSize: 13, marginTop: 2 },
+  title: { fontSize: 17, fontWeight: "700", color: colors.ink, fontFamily: fonts.family },
+  meta: { color: colors.muted, fontSize: 13, marginTop: 2, fontFamily: fonts.family },
 });

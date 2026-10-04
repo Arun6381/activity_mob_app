@@ -3,7 +3,7 @@ import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TextInput
 import Screen from "../components/Screen";
 import { Banner, Button } from "../components/ui";
 import { api, ApiError } from "../api";
-import { colors, radius } from "../theme";
+import { colors, fonts, radius } from "../theme";
 
 export default function LoginScreen({ onBack, onSuccess }: { onBack: () => void; onSuccess: () => void }) {
   const [email, setEmail] = useState("");
@@ -51,9 +51,9 @@ export default function LoginScreen({ onBack, onSuccess }: { onBack: () => void;
 }
 
 const s = StyleSheet.create({
-  h1: { fontSize: 24, fontWeight: "800", color: colors.ink },
-  sub: { color: colors.muted, marginTop: 4, marginBottom: 16 },
+  h1: { fontSize: 24, fontWeight: "800", color: colors.ink, fontFamily: fonts.family },
+  sub: { color: colors.muted, marginTop: 4, marginBottom: 16, fontFamily: fonts.family },
   panel: { backgroundColor: "#fff", borderWidth: 1, borderColor: colors.line, borderRadius: radius.md, padding: 16, marginBottom: 16 },
-  label: { fontSize: 14, fontWeight: "600", color: colors.ink, marginBottom: 6 },
-  input: { minHeight: 48, borderWidth: 1, borderColor: "#b9c9c6", borderRadius: radius.sm, paddingHorizontal: 12, fontSize: 16, color: colors.ink, backgroundColor: "#fff" },
+  label: { fontSize: 14, fontWeight: "600", color: colors.ink, marginBottom: 6, fontFamily: fonts.family },
+  input: { minHeight: 48, borderWidth: 1, borderColor: "#b9c9c6", borderRadius: radius.sm, paddingHorizontal: 12, fontSize: 16, color: colors.ink, backgroundColor: "#fff", fontFamily: fonts.family },
 });

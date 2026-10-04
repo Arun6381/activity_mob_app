@@ -3,7 +3,7 @@ import { Alert, FlatList, Pressable, RefreshControl, ScrollView, StyleSheet, Tex
 import Screen from "../components/Screen";
 import { Banner, Button, Empty, Loading } from "../components/ui";
 import { api, ApiError, downloadBackup } from "../api";
-import { colors, radius } from "../theme";
+import { colors, fonts, radius } from "../theme";
 import { AdminTemplate, Backup } from "../types";
 
 const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -81,7 +81,7 @@ export default function ArchiveScreen({ onBack, onUnauthorized }: { onBack: () =
                   <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 8, marginBottom: 12 }}>
                     {templates.map((t) => (
                       <Pressable key={t.id} onPress={() => setTid(t.id)} style={[s.chip, t.id === tid && s.chipOn]}>
-                        <Text style={{ color: t.id === tid ? "#fff" : colors.brandDark, fontWeight: "600" }}>{t.name}</Text>
+                        <Text style={{ color: t.id === tid ? "#fff" : colors.brandDark, fontWeight: "600", fontFamily: fonts.family }}>{t.name}</Text>
                       </Pressable>
                     ))}
                   </ScrollView>
@@ -115,17 +115,17 @@ export default function ArchiveScreen({ onBack, onUnauthorized }: { onBack: () =
 }
 
 const s = StyleSheet.create({
-  sub: { color: colors.muted },
+  sub: { color: colors.muted, fontFamily: fonts.family },
   panel: { backgroundColor: "#fff", borderWidth: 1, borderColor: colors.line, borderRadius: radius.md, padding: 16 },
-  tplName: { fontSize: 16, fontWeight: "700", color: colors.ink, marginBottom: 12 },
+  tplName: { fontSize: 16, fontWeight: "700", color: colors.ink, marginBottom: 12, fontFamily: fonts.family },
   chip: { minHeight: 40, paddingHorizontal: 14, borderRadius: radius.sm, borderWidth: 1, borderColor: colors.brand, backgroundColor: "#fff", alignItems: "center", justifyContent: "center" },
   chipOn: { backgroundColor: colors.brand },
   stepper: { flexDirection: "row", alignItems: "center", justifyContent: "space-between" },
   step: { width: 52, height: 48, borderRadius: radius.sm, borderWidth: 1, borderColor: colors.brand, alignItems: "center", justifyContent: "center", backgroundColor: "#fff" },
-  stepText: { fontSize: 24, color: colors.brandDark, fontWeight: "700" },
-  monthText: { fontSize: 18, fontWeight: "800", color: colors.ink },
-  section: { fontSize: 16, fontWeight: "800", color: colors.brandDark, marginTop: 4 },
+  stepText: { fontSize: 24, color: colors.brandDark, fontWeight: "700", fontFamily: fonts.family },
+  monthText: { fontSize: 18, fontWeight: "800", color: colors.ink, fontFamily: fonts.family },
+  section: { fontSize: 16, fontWeight: "800", color: colors.brandDark, marginTop: 4, fontFamily: fonts.family },
   card: { backgroundColor: "#fff", borderWidth: 1, borderColor: colors.line, borderRadius: radius.md, padding: 14, flexDirection: "row", alignItems: "center", gap: 12 },
-  cardTitle: { fontSize: 15, fontWeight: "700", color: colors.ink },
-  cardSub: { color: colors.muted, fontSize: 13, marginTop: 2 },
+  cardTitle: { fontSize: 15, fontWeight: "700", color: colors.ink, fontFamily: fonts.family },
+  cardSub: { color: colors.muted, fontSize: 13, marginTop: 2, fontFamily: fonts.family },
 });

@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "User Details",
-    "slug": "user-details",
+    "name": "Form",
+    "slug": "form",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.userdetails.app"
+      "bundleIdentifier": "com.form.app"
     },
     "android": {
       "adaptiveIcon": {
@@ -18,10 +18,20 @@
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.userdetails.app"
+      "package": "com.form.app"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "backgroundColor": "#FFFFFF",
+          "imageWidth": 220
+        }
+      ]
+    ]
   }
 }

@@ -3,7 +3,7 @@ import { FlatList, Pressable, RefreshControl, StyleSheet, Text, View } from "rea
 import Screen from "../components/Screen";
 import { Banner, Button, Empty, Loading } from "../components/ui";
 import { api } from "../api";
-import { colors, radius } from "../theme";
+import { colors, fonts, radius } from "../theme";
 import { FormSummary } from "../types";
 
 export default function HomeScreen({ onOpenForm, onAdmin }: {
@@ -15,13 +15,8 @@ export default function HomeScreen({ onOpenForm, onAdmin }: {
 
   const load = useCallback(async () => {
     setError("");
-    try {
-      const data = await api.forms();
-      setForms(Array.isArray(data) ? data : []);
-    } catch (e) {
-      setError((e as Error)?.message || "Failed to load forms.");
-      setForms([]);
-    }
+    try { setForms(await api.forms()); }
+    catch (e) { setError((e as Error).message); setForms((f) => f ?? []); }
   }, []);
 
   useEffect(() => { load(); }, [load]);
@@ -55,9 +50,9 @@ export default function HomeScreen({ onOpenForm, onAdmin }: {
 }
 
 const s = StyleSheet.create({
-  h1: { fontSize: 24, fontWeight: "800", color: colors.ink },
-  sub: { color: colors.muted, marginTop: 4, marginBottom: 16 },
+  h1: { fontSize: 24, fontWeight: "800", color: colors.ink, fontFamily: fonts.family },
+  sub: { color: colors.muted, marginTop: 4, marginBottom: 16, fontFamily: fonts.family },
   card: { backgroundColor: "#fff", borderWidth: 1, borderColor: colors.line, borderRadius: radius.md, padding: 18 },
-  cardTitle: { fontSize: 17, fontWeight: "700", color: colors.ink },
-  cardSub: { color: colors.muted, fontSize: 13, marginTop: 2 },
+  cardTitle: { fontSize: 17, fontWeight: "700", color: colors.ink, fontFamily: fonts.family },
+  cardSub: { color: colors.muted, fontSize: 13, marginTop: 2, fontFamily: fonts.family },
 });

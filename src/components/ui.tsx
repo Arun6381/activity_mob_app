@@ -1,6 +1,6 @@
 import React from "react";
 import { ActivityIndicator, Pressable, StyleSheet, Text, View, ViewStyle } from "react-native";
-import { colors, radius } from "../theme";
+import { colors, fonts, radius } from "../theme";
 
 export function Button({ title, onPress, variant = "solid", disabled, loading, style }: {
   title: string; onPress: () => void; variant?: "solid" | "ghost"; disabled?: boolean; loading?: boolean; style?: ViewStyle;
@@ -18,17 +18,10 @@ export function Button({ title, onPress, variant = "solid", disabled, loading, s
   );
 }
 
-export function Banner({ text, kind }: { text: unknown; kind: "ok" | "error" }) {
-  const displayText =
-    typeof text === "string"
-      ? text
-      : text && typeof text === "object" && "message" in text && typeof (text as any).message === "string"
-      ? (text as any).message
-      : JSON.stringify(text) || "";
-
+export function Banner({ text, kind }: { text: string; kind: "ok" | "error" }) {
   return (
     <View style={[s.banner, kind === "ok" ? s.bannerOk : s.bannerErr]} accessibilityRole="alert">
-      <Text style={{ color: kind === "ok" ? colors.ink : colors.danger, fontWeight: "600" }}>{displayText}</Text>
+      <Text style={{ color: kind === "ok" ? colors.ink : colors.danger, fontWeight: "600", fontFamily: fonts.family }}>{text}</Text>
     </View>
   );
 }
@@ -38,14 +31,14 @@ export function Loading() {
 }
 
 export function Empty({ text }: { text: string }) {
-  return <Text style={{ color: colors.muted, textAlign: "center", padding: 32 }}>{text}</Text>;
+  return <Text style={{ color: colors.muted, textAlign: "center", padding: 32, fontFamily: fonts.family }}>{text}</Text>;
 }
 
 const s = StyleSheet.create({
   btn: { minHeight: 48, paddingHorizontal: 20, borderRadius: radius.sm, alignItems: "center", justifyContent: "center", borderWidth: 1, borderColor: colors.brand },
   solid: { backgroundColor: colors.brand },
   ghost: { backgroundColor: "#fff" },
-  btnText: { fontSize: 16, fontWeight: "700" },
+  btnText: { fontSize: 16, fontWeight: "700", fontFamily: fonts.family },
   banner: { padding: 12, borderRadius: radius.sm, marginBottom: 16, borderLeftWidth: 5 },
   bannerOk: { backgroundColor: colors.tint, borderLeftColor: colors.brand },
   bannerErr: { backgroundColor: "#fdecea", borderLeftColor: colors.danger },

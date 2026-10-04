@@ -1,7 +1,7 @@
 import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { colors } from "../theme";
+import { colors, fonts } from "../theme";
 
 export default function Screen({ title, onBack, right, children }: {
   title: string; onBack?: () => void; right?: { label: string; onPress: () => void }; children: React.ReactNode;
@@ -34,6 +34,6 @@ export default function Screen({ title, onBack, right, children }: {
 const s = StyleSheet.create({
   header: { backgroundColor: colors.brandDark, paddingHorizontal: 16, paddingBottom: 12, flexDirection: "row", alignItems: "center" },
   side: { width: 80 },
-  title: { flex: 1, color: "#fff", fontSize: 18, fontWeight: "800", textAlign: "center" },
-  headerAction: { color: "#cfe9e5", fontSize: 16, fontWeight: "600" },
+  title: { flex: 1, color: "#fff", fontSize: 18, fontWeight: "800", textAlign: "center", fontFamily: fonts.family },
+  headerAction: { color: "#cfe9e5", fontSize: 16, fontWeight: "600", fontFamily: fonts.family },
 });

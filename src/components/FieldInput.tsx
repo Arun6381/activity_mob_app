@@ -1,7 +1,7 @@
 import React from "react";
 import { Platform, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import DateTimePicker, { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
-import { colors, radius } from "../theme";
+import { colors, fonts, radius } from "../theme";
 import { FieldDef } from "../types";
 
 const pad = (n: number) => String(n).padStart(2, "0");
@@ -42,7 +42,7 @@ export default function FieldInput({ field, value, onChange, error }: {
           return (
             <Pressable key={o} onPress={() => onChange(on ? "" : o)} accessibilityRole="radio" accessibilityState={{ selected: on }}
               style={[s.chip, on && s.chipOn]}>
-              <Text style={{ color: on ? "#fff" : colors.brandDark, fontWeight: "600" }}>{o}</Text>
+              <Text style={{ color: on ? "#fff" : colors.brandDark, fontWeight: "600", fontFamily: fonts.family }}>{o}</Text>
             </Pressable>
           );
         })}
@@ -72,11 +72,11 @@ export default function FieldInput({ field, value, onChange, error }: {
 }
 
 const s = StyleSheet.create({
-  label: { fontSize: 14, fontWeight: "600", color: colors.ink, marginBottom: 6 },
-  input: { minHeight: 48, borderWidth: 1, borderColor: "#b9c9c6", borderRadius: radius.sm, paddingHorizontal: 12, paddingVertical: 10, backgroundColor: "#fff", justifyContent: "center" },
-  text: { fontSize: 16, color: colors.ink },
-  placeholder: { fontSize: 16, color: colors.muted },
-  err: { color: colors.danger, fontSize: 13, marginTop: 4 },
+  label: { fontSize: 14, fontWeight: "600", color: colors.ink, marginBottom: 6, fontFamily: fonts.family },
+  input: { minHeight: 48, borderWidth: 1, borderColor: "#b9c9c6", borderRadius: radius.sm, paddingHorizontal: 12, paddingVertical: 10, backgroundColor: "#fff", justifyContent: "center", fontFamily: fonts.family },
+  text: { fontSize: 16, color: colors.ink, fontFamily: fonts.family },
+  placeholder: { fontSize: 16, color: colors.muted, fontFamily: fonts.family },
+  err: { color: colors.danger, fontSize: 13, marginTop: 4, fontFamily: fonts.family },
   chips: { flexDirection: "row", flexWrap: "wrap", gap: 8 },
   chip: { minHeight: 44, paddingHorizontal: 16, borderRadius: radius.sm, borderWidth: 1, borderColor: colors.brand, backgroundColor: "#fff", alignItems: "center", justifyContent: "center" },
   chipOn: { backgroundColor: colors.brand },

@@ -3,7 +3,7 @@ import { KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Swit
 import Screen from "../components/Screen";
 import { Banner, Button, Loading } from "../components/ui";
 import { api, ApiError } from "../api";
-import { colors, radius } from "../theme";
+import { colors, fonts, radius } from "../theme";
 import { FIELD_TYPES, FieldDef, FieldType } from "../types";
 
 type DraftField = { key: string; label: string; type: FieldType; required: boolean; opts: string; isNew: boolean };
@@ -86,7 +86,7 @@ export default function TemplateEditScreen({ id, onBack, onSaved, onUnauthorized
                 <View style={s.chips}>
                   {FIELD_TYPES.map((t) => (
                     <Pressable key={t} onPress={() => setField(i, { type: t })} style={[s.chip, f.type === t && s.chipOn]} accessibilityRole="radio" accessibilityState={{ selected: f.type === t }}>
-                      <Text style={{ color: f.type === t ? "#fff" : colors.brandDark, fontWeight: "600" }}>{t}</Text>
+                      <Text style={{ color: f.type === t ? "#fff" : colors.brandDark, fontWeight: "600", fontFamily: fonts.family }}>{t}</Text>
                     </Pressable>
                   ))}
                 </View>
@@ -124,17 +124,17 @@ export default function TemplateEditScreen({ id, onBack, onSaved, onUnauthorized
 
 const s = StyleSheet.create({
   panel: { backgroundColor: "#fff", borderWidth: 1, borderColor: colors.line, borderRadius: radius.md, padding: 16, marginBottom: 14 },
-  section: { fontSize: 16, fontWeight: "800", color: colors.brandDark, marginBottom: 10 },
-  label: { fontSize: 14, fontWeight: "600", color: colors.ink, marginBottom: 6 },
-  input: { minHeight: 48, borderWidth: 1, borderColor: "#b9c9c6", borderRadius: radius.sm, paddingHorizontal: 12, fontSize: 16, color: colors.ink, backgroundColor: "#fff" },
+  section: { fontSize: 16, fontWeight: "800", color: colors.brandDark, marginBottom: 10, fontFamily: fonts.family },
+  label: { fontSize: 14, fontWeight: "600", color: colors.ink, marginBottom: 6, fontFamily: fonts.family },
+  input: { minHeight: 48, borderWidth: 1, borderColor: "#b9c9c6", borderRadius: radius.sm, paddingHorizontal: 12, fontSize: 16, color: colors.ink, backgroundColor: "#fff", fontFamily: fonts.family },
   disabled: { backgroundColor: "#f0f3f2", color: colors.muted },
-  hint: { color: colors.muted, fontSize: 12, marginTop: 4 },
+  hint: { color: colors.muted, fontSize: 12, marginTop: 4, fontFamily: fonts.family },
   chips: { flexDirection: "row", flexWrap: "wrap", gap: 8 },
   chip: { minHeight: 40, paddingHorizontal: 14, borderRadius: radius.sm, borderWidth: 1, borderColor: colors.brand, backgroundColor: "#fff", alignItems: "center", justifyContent: "center" },
   chipOn: { backgroundColor: colors.brand },
   switchRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginTop: 14, minHeight: 44 },
-  switchText: { fontSize: 15, color: colors.ink, fontWeight: "600", flex: 1, paddingRight: 12 },
+  switchText: { fontSize: 15, color: colors.ink, fontWeight: "600", flex: 1, paddingRight: 12, fontFamily: fonts.family },
   actions: { flexDirection: "row", gap: 8, marginTop: 8 },
   small: { width: 56, paddingHorizontal: 0 },
-  note: { color: colors.muted, fontSize: 12, marginTop: 12 },
+  note: { color: colors.muted, fontSize: 12, marginTop: 12, fontFamily: fonts.family },
 });

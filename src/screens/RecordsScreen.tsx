@@ -3,7 +3,7 @@ import { FlatList, Pressable, RefreshControl, ScrollView, StyleSheet, Text, Text
 import Screen from "../components/Screen";
 import { Banner, Button, Empty, Loading } from "../components/ui";
 import { api, ApiError, exportToExcel } from "../api";
-import { colors, radius } from "../theme";
+import { colors, fonts, radius } from "../theme";
 import { AdminTemplate, Submission } from "../types";
 
 export default function RecordsScreen({ onBack, onUnauthorized }: {
@@ -78,7 +78,7 @@ export default function RecordsScreen({ onBack, onUnauthorized }: {
                 <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 8 }} keyboardShouldPersistTaps="handled">
                   {templates.map((x) => (
                     <Pressable key={x.id} onPress={() => setTid(x.id)} style={[s.chip, x.id === tid && s.chipOn]}>
-                      <Text style={{ color: x.id === tid ? "#fff" : colors.brandDark, fontWeight: "600" }}>{x.name}{x.is_active ? "" : " (inactive)"}</Text>
+                      <Text style={{ color: x.id === tid ? "#fff" : colors.brandDark, fontWeight: "600", fontFamily: fonts.family }}>{x.name}{x.is_active ? "" : " (inactive)"}</Text>
                     </Pressable>
                   ))}
                 </ScrollView>
@@ -87,7 +87,7 @@ export default function RecordsScreen({ onBack, onUnauthorized }: {
                 autoCapitalize="none" autoCorrect={false} returnKeyType="search" />
               <Button title="Export to Excel" onPress={doExport} loading={exporting} disabled={!t} />
               {error ? <Banner kind="error" text={error} /> : null}
-              <Text style={{ color: colors.muted }}>{rows === null ? "Loading..." : `${rows.length} ${rows.length === 1 ? "entry" : "entries"}`}</Text>
+              <Text style={{ color: colors.muted, fontFamily: fonts.family }}>{rows === null ? "Loading..." : `${rows.length} ${rows.length === 1 ? "entry" : "entries"}`}</Text>
             </View>
           }
           ListEmptyComponent={rows === null ? <Loading /> : <Empty text={t ? "No entries found." : "No forms yet."} />}
@@ -111,10 +111,10 @@ export default function RecordsScreen({ onBack, onUnauthorized }: {
 const s = StyleSheet.create({
   chip: { minHeight: 40, paddingHorizontal: 14, borderRadius: radius.sm, borderWidth: 1, borderColor: colors.brand, backgroundColor: "#fff", alignItems: "center", justifyContent: "center" },
   chipOn: { backgroundColor: colors.brand },
-  search: { minHeight: 48, borderWidth: 1, borderColor: "#b9c9c6", borderRadius: radius.sm, paddingHorizontal: 12, fontSize: 16, color: colors.ink, backgroundColor: "#fff" },
+  search: { minHeight: 48, borderWidth: 1, borderColor: "#b9c9c6", borderRadius: radius.sm, paddingHorizontal: 12, fontSize: 16, color: colors.ink, backgroundColor: "#fff", fontFamily: fonts.family },
   card: { backgroundColor: "#fff", borderWidth: 1, borderColor: colors.line, borderRadius: radius.md, padding: 14 },
   line: { flexDirection: "row", justifyContent: "space-between", gap: 16, paddingVertical: 5 },
-  lineLabel: { color: colors.muted, flexShrink: 0, maxWidth: "45%" },
-  lineValue: { color: colors.ink, fontWeight: "600", flex: 1, textAlign: "right" },
-  created: { color: colors.muted, fontSize: 12, marginTop: 8 },
+  lineLabel: { color: colors.muted, flexShrink: 0, maxWidth: "45%", fontFamily: fonts.family },
+  lineValue: { color: colors.ink, fontWeight: "600", flex: 1, textAlign: "right", fontFamily: fonts.family },
+  created: { color: colors.muted, fontSize: 12, marginTop: 8, fontFamily: fonts.family },
 });
