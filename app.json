@@ -31,7 +31,24 @@
           "backgroundColor": "#FFFFFF",
           "imageWidth": 220
         }
-      ]
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "buildArchs": [
+              "arm64-v8a"
+            ],
+            "enableProguardInReleaseBuilds": true,
+            "enableShrinkResourcesInReleaseBuilds": true
+          }
+        }
     ]
+  ],
+  "extra": {
+    "eas": {
+      "projectId": "5fcb7dae-ea74-42e4-bf6b-801d9d9c5458"
+    }
+  }
   }
 }
